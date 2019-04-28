@@ -18,6 +18,8 @@ export class Cat {
 
 export abstract class IMutation {
     abstract createCat(createCatInput?: CreateCatInput): Cat | Promise<Cat>;
+
+    abstract deleteCat(id?: string): string | Promise<string>;
 }
 
 export abstract class IQuery {

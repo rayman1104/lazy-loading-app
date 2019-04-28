@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package cats;
+
+service CatService {
+  rpc List (Empty) returns (CatList) {}
+  rpc Insert (Cat) returns (Empty) {}
+  rpc Get (CatIdRequest) returns (Cat) {}
+  rpc Delete (CatIdRequest) returns (Empty) {}
+  rpc Watch (Empty) returns (stream Cat) {}
+}
+
+message Empty {}
+
+message Cat {
+  int32 id = 1;
+  string title = 2;
+  string author = 3;
+}
+
+message CatList {
+  repeated Cat cats = 1;
+}
+
+message CatIdRequest {
+  int32 id = 1;
+}
