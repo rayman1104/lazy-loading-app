@@ -13,6 +13,7 @@
     "e2e": "ng e2e",
     "gen:graphql": "ts-node -O '{\"module\": \"commonjs\"}' ./libs/api-interface/src/graphql/generate-typings.ts",
     "gen:protobuf": "protoc --plugin=\"protoc-gen-ts=./node_modules/.bin/protoc-gen-ts\" --js_out=\"import_style=commonjs,binary:.\" --ts_out=\".\" ./libs/api-interface/src/protobuf/cats.proto",
+    "gen:go-protobuf": "cd ./libs/api-interface/src/protobuf; protoc --go_out=plugins=grpc:../../../../apps/go-backend cats.proto",
     "affected:apps": "./node_modules/.bin/nx affected:apps",
     "affected:libs": "./node_modules/.bin/nx affected:libs",
     "affected:build": "./node_modules/.bin/nx affected:build",
