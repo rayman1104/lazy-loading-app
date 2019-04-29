@@ -6,7 +6,6 @@ networks:
 
 services:
   api:
-    container_name: lazy-api
     networks:
       - corp
     build:
@@ -14,8 +13,7 @@ services:
       dockerfile: server.dockerfile
     ports:
       - "3333:3333"
-  lazy-app:
-    container_name: lazy-app
+  app:
     networks:
       - corp
     build:
@@ -30,3 +28,10 @@ services:
       - corp
     environment:
       POSTGRES_PASSWORD: example
+  go-backend:
+    networks:
+      - corp
+    build:
+      context: ./apps/go-backend
+    ports:
+      - "50051:50051"
