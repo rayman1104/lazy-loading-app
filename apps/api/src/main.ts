@@ -12,6 +12,7 @@ async function bootstrap() {
     .setTitle('Lazy loading app')
     .setDescription('The Lazy loading API description')
     .setVersion('1.0')
+    .setBasePath('/api')
     .addTag('api')
     .build();
   const document = SwaggerModule.createDocument(app, options);

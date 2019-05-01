@@ -55,10 +55,57 @@ func (m *Empty) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Empty proto.InternalMessageInfo
 
+type CatInput struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Age                  int32    `protobuf:"varint,2,opt,name=age,proto3" json:"age,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CatInput) Reset()         { *m = CatInput{} }
+func (m *CatInput) String() string { return proto.CompactTextString(m) }
+func (*CatInput) ProtoMessage()    {}
+func (*CatInput) Descriptor() ([]byte, []int) {
+	return fileDescriptor_38f0b8057a110604, []int{1}
+}
+
+func (m *CatInput) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CatInput.Unmarshal(m, b)
+}
+func (m *CatInput) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CatInput.Marshal(b, m, deterministic)
+}
+func (m *CatInput) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CatInput.Merge(m, src)
+}
+func (m *CatInput) XXX_Size() int {
+	return xxx_messageInfo_CatInput.Size(m)
+}
+func (m *CatInput) XXX_DiscardUnknown() {
+	xxx_messageInfo_CatInput.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CatInput proto.InternalMessageInfo
+
+func (m *CatInput) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *CatInput) GetAge() int32 {
+	if m != nil {
+		return m.Age
+	}
+	return 0
+}
+
 type Cat struct {
 	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title                string   `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Author               string   `protobuf:"bytes,3,opt,name=author,proto3" json:"author,omitempty"`
+	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Age                  int32    `protobuf:"varint,3,opt,name=age,proto3" json:"age,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -68,7 +115,7 @@ func (m *Cat) Reset()         { *m = Cat{} }
 func (m *Cat) String() string { return proto.CompactTextString(m) }
 func (*Cat) ProtoMessage()    {}
 func (*Cat) Descriptor() ([]byte, []int) {
-	return fileDescriptor_38f0b8057a110604, []int{1}
+	return fileDescriptor_38f0b8057a110604, []int{2}
 }
 
 func (m *Cat) XXX_Unmarshal(b []byte) error {
@@ -96,18 +143,18 @@ func (m *Cat) GetId() int32 {
 	return 0
 }
 
-func (m *Cat) GetTitle() string {
+func (m *Cat) GetName() string {
 	if m != nil {
-		return m.Title
+		return m.Name
 	}
 	return ""
 }
 
-func (m *Cat) GetAuthor() string {
+func (m *Cat) GetAge() int32 {
 	if m != nil {
-		return m.Author
+		return m.Age
 	}
-	return ""
+	return 0
 }
 
 type CatList struct {
@@ -121,7 +168,7 @@ func (m *CatList) Reset()         { *m = CatList{} }
 func (m *CatList) String() string { return proto.CompactTextString(m) }
 func (*CatList) ProtoMessage()    {}
 func (*CatList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_38f0b8057a110604, []int{2}
+	return fileDescriptor_38f0b8057a110604, []int{3}
 }
 
 func (m *CatList) XXX_Unmarshal(b []byte) error {
@@ -149,39 +196,39 @@ func (m *CatList) GetCats() []*Cat {
 	return nil
 }
 
-type CatIdRequest struct {
+type CatById struct {
 	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CatIdRequest) Reset()         { *m = CatIdRequest{} }
-func (m *CatIdRequest) String() string { return proto.CompactTextString(m) }
-func (*CatIdRequest) ProtoMessage()    {}
-func (*CatIdRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_38f0b8057a110604, []int{3}
+func (m *CatById) Reset()         { *m = CatById{} }
+func (m *CatById) String() string { return proto.CompactTextString(m) }
+func (*CatById) ProtoMessage()    {}
+func (*CatById) Descriptor() ([]byte, []int) {
+	return fileDescriptor_38f0b8057a110604, []int{4}
 }
 
-func (m *CatIdRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CatIdRequest.Unmarshal(m, b)
+func (m *CatById) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CatById.Unmarshal(m, b)
 }
-func (m *CatIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CatIdRequest.Marshal(b, m, deterministic)
+func (m *CatById) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CatById.Marshal(b, m, deterministic)
 }
-func (m *CatIdRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CatIdRequest.Merge(m, src)
+func (m *CatById) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CatById.Merge(m, src)
 }
-func (m *CatIdRequest) XXX_Size() int {
-	return xxx_messageInfo_CatIdRequest.Size(m)
+func (m *CatById) XXX_Size() int {
+	return xxx_messageInfo_CatById.Size(m)
 }
-func (m *CatIdRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CatIdRequest.DiscardUnknown(m)
+func (m *CatById) XXX_DiscardUnknown() {
+	xxx_messageInfo_CatById.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CatIdRequest proto.InternalMessageInfo
+var xxx_messageInfo_CatById proto.InternalMessageInfo
 
-func (m *CatIdRequest) GetId() int32 {
+func (m *CatById) GetId() int32 {
 	if m != nil {
 		return m.Id
 	}
@@ -190,31 +237,33 @@ func (m *CatIdRequest) GetId() int32 {
 
 func init() {
 	proto.RegisterType((*Empty)(nil), "cats.Empty")
+	proto.RegisterType((*CatInput)(nil), "cats.CatInput")
 	proto.RegisterType((*Cat)(nil), "cats.Cat")
 	proto.RegisterType((*CatList)(nil), "cats.CatList")
-	proto.RegisterType((*CatIdRequest)(nil), "cats.CatIdRequest")
+	proto.RegisterType((*CatById)(nil), "cats.CatById")
 }
 
 func init() { proto.RegisterFile("cats.proto", fileDescriptor_38f0b8057a110604) }
 
 var fileDescriptor_38f0b8057a110604 = []byte{
-	// 251 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x90, 0xcd, 0x4a, 0xc3, 0x40,
-	0x14, 0x85, 0x33, 0x49, 0x93, 0xd2, 0x53, 0x75, 0x71, 0x11, 0x09, 0x01, 0x25, 0x8c, 0x22, 0x01,
-	0xa1, 0x48, 0x7d, 0x84, 0x51, 0xa4, 0xe0, 0x2a, 0x2e, 0x5c, 0x8f, 0xc9, 0x85, 0x0e, 0x54, 0x53,
-	0x93, 0x5b, 0xc1, 0xb7, 0xf4, 0x91, 0xa4, 0x13, 0x49, 0xeb, 0xcf, 0x6e, 0xee, 0xcc, 0x3d, 0xdf,
-	0x77, 0x18, 0xa0, 0xb2, 0xd2, 0xcd, 0xd6, 0x6d, 0x23, 0x0d, 0x8d, 0xb6, 0x67, 0x3d, 0x46, 0x7c,
-	0xf7, 0xb2, 0x96, 0x0f, 0x6d, 0x10, 0x19, 0x2b, 0x74, 0x84, 0xd0, 0xd5, 0xa9, 0xca, 0x55, 0x11,
-	0x97, 0xa1, 0xab, 0xe9, 0x18, 0xb1, 0x38, 0x59, 0x71, 0x1a, 0xe6, 0xaa, 0x98, 0x94, 0xfd, 0x40,
-	0x27, 0x48, 0xec, 0x46, 0x96, 0x4d, 0x9b, 0x46, 0xfe, 0xfa, 0x7b, 0xd2, 0x05, 0xc6, 0xc6, 0xca,
-	0x83, 0xeb, 0x84, 0x4e, 0xe1, 0x05, 0xa9, 0xca, 0xa3, 0x62, 0x3a, 0x9f, 0xcc, 0xbc, 0xd9, 0x58,
-	0x29, 0x7b, 0xef, 0x19, 0x0e, 0x8c, 0x95, 0x45, 0x5d, 0xf2, 0xdb, 0x86, 0xbb, 0x3f, 0xde, 0xf9,
-	0xa7, 0x02, 0x8c, 0x95, 0x47, 0x6e, 0xdf, 0x5d, 0xc5, 0x74, 0x81, 0x91, 0xa7, 0x4e, 0x7b, 0x8e,
-	0xaf, 0x9c, 0x1d, 0x0e, 0xd0, 0xed, 0x9b, 0x0e, 0x48, 0x23, 0x59, 0xbc, 0x76, 0xdc, 0x0a, 0xed,
-	0x7c, 0xd9, 0x7e, 0x44, 0x07, 0x74, 0x89, 0xe8, 0x9e, 0x85, 0x68, 0x58, 0x18, 0x3a, 0x64, 0xbb,
-	0x90, 0x0e, 0xe8, 0x0a, 0xc9, 0x2d, 0xaf, 0x58, 0xf8, 0xdf, 0xd5, 0x5f, 0xd0, 0x73, 0xc4, 0x4f,
-	0x56, 0xaa, 0xe5, 0xcf, 0x7e, 0xfb, 0xbc, 0x6b, 0xf5, 0x9c, 0xf8, 0x7f, 0xbf, 0xf9, 0x0a, 0x00,
-	0x00, 0xff, 0xff, 0x21, 0xa0, 0x96, 0x93, 0x85, 0x01, 0x00, 0x00,
+	// 260 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x91, 0x4f, 0x4b, 0xc3, 0x40,
+	0x10, 0xc5, 0xbb, 0xd9, 0x24, 0xb5, 0x53, 0x2c, 0x32, 0xa7, 0x58, 0x10, 0xe2, 0xfa, 0x87, 0x9c,
+	0x4a, 0xa9, 0x47, 0x6f, 0xae, 0x22, 0x01, 0x4f, 0xf1, 0xe0, 0x79, 0x4d, 0x06, 0x0d, 0xd8, 0x34,
+	0x24, 0xa3, 0xd0, 0x8f, 0xe8, 0xb7, 0x92, 0x4c, 0x21, 0x69, 0xeb, 0xed, 0xc1, 0xbc, 0xf7, 0xe6,
+	0x37, 0x0c, 0x40, 0xee, 0xb8, 0x5d, 0xd4, 0xcd, 0x86, 0x37, 0xe8, 0x77, 0xda, 0x8c, 0x21, 0x78,
+	0x5a, 0xd7, 0xbc, 0x35, 0x4b, 0x38, 0xb1, 0x8e, 0xd3, 0xaa, 0xfe, 0x66, 0x44, 0xf0, 0x2b, 0xb7,
+	0xa6, 0x48, 0xc5, 0x2a, 0x99, 0x64, 0xa2, 0xf1, 0x0c, 0xb4, 0xfb, 0xa0, 0xc8, 0x8b, 0x55, 0x12,
+	0x64, 0x9d, 0x34, 0xf7, 0xa0, 0xad, 0x63, 0x9c, 0x81, 0x57, 0x16, 0x62, 0x0d, 0x32, 0xaf, 0x2c,
+	0xfa, 0xb0, 0xf7, 0x3f, 0xac, 0x87, 0x70, 0x02, 0x63, 0xeb, 0xf8, 0xa5, 0x6c, 0x19, 0x2f, 0x40,
+	0x50, 0x22, 0x15, 0xeb, 0x64, 0xba, 0x9a, 0x2c, 0x84, 0xd1, 0x3a, 0xce, 0x76, 0x84, 0xe7, 0xe2,
+	0x7c, 0xd8, 0xa6, 0xc5, 0xf1, 0xaa, 0xd5, 0xaf, 0x02, 0xb0, 0x8e, 0x5f, 0xa9, 0xf9, 0x29, 0x73,
+	0xc2, 0x6b, 0xf0, 0xa5, 0x70, 0xba, 0xab, 0x90, 0xbb, 0xe6, 0xa7, 0x7d, 0x5f, 0x37, 0x33, 0x23,
+	0xbc, 0x81, 0x30, 0xad, 0x5a, 0x6a, 0x18, 0x67, 0xfd, 0x48, 0xce, 0x9e, 0x0f, 0xab, 0xcd, 0x08,
+	0x2f, 0x41, 0x3f, 0x13, 0xe3, 0x10, 0xef, 0x08, 0x0e, 0x2d, 0xb7, 0x10, 0x3e, 0xd2, 0x17, 0x31,
+	0x1d, 0xbb, 0xf6, 0x01, 0xcc, 0x08, 0xaf, 0x20, 0x78, 0x73, 0x9c, 0x7f, 0x1e, 0x82, 0xed, 0x57,
+	0x2d, 0xd5, 0x7b, 0x28, 0x5f, 0xb9, 0xfb, 0x0b, 0x00, 0x00, 0xff, 0xff, 0xa1, 0x4e, 0x66, 0x2f,
+	0xa3, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -230,9 +279,9 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type CatServiceClient interface {
 	List(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CatList, error)
-	Insert(ctx context.Context, in *Cat, opts ...grpc.CallOption) (*Empty, error)
-	Get(ctx context.Context, in *CatIdRequest, opts ...grpc.CallOption) (*Cat, error)
-	Delete(ctx context.Context, in *CatIdRequest, opts ...grpc.CallOption) (*Empty, error)
+	Insert(ctx context.Context, in *CatInput, opts ...grpc.CallOption) (*Cat, error)
+	Get(ctx context.Context, in *CatById, opts ...grpc.CallOption) (*Cat, error)
+	Delete(ctx context.Context, in *CatById, opts ...grpc.CallOption) (*Empty, error)
 	Watch(ctx context.Context, in *Empty, opts ...grpc.CallOption) (CatService_WatchClient, error)
 }
 
@@ -253,8 +302,8 @@ func (c *catServiceClient) List(ctx context.Context, in *Empty, opts ...grpc.Cal
 	return out, nil
 }
 
-func (c *catServiceClient) Insert(ctx context.Context, in *Cat, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *catServiceClient) Insert(ctx context.Context, in *CatInput, opts ...grpc.CallOption) (*Cat, error) {
+	out := new(Cat)
 	err := c.cc.Invoke(ctx, "/cats.CatService/Insert", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -262,7 +311,7 @@ func (c *catServiceClient) Insert(ctx context.Context, in *Cat, opts ...grpc.Cal
 	return out, nil
 }
 
-func (c *catServiceClient) Get(ctx context.Context, in *CatIdRequest, opts ...grpc.CallOption) (*Cat, error) {
+func (c *catServiceClient) Get(ctx context.Context, in *CatById, opts ...grpc.CallOption) (*Cat, error) {
 	out := new(Cat)
 	err := c.cc.Invoke(ctx, "/cats.CatService/Get", in, out, opts...)
 	if err != nil {
@@ -271,7 +320,7 @@ func (c *catServiceClient) Get(ctx context.Context, in *CatIdRequest, opts ...gr
 	return out, nil
 }
 
-func (c *catServiceClient) Delete(ctx context.Context, in *CatIdRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *catServiceClient) Delete(ctx context.Context, in *CatById, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/cats.CatService/Delete", in, out, opts...)
 	if err != nil {
@@ -315,9 +364,9 @@ func (x *catServiceWatchClient) Recv() (*Cat, error) {
 // CatServiceServer is the server API for CatService service.
 type CatServiceServer interface {
 	List(context.Context, *Empty) (*CatList, error)
-	Insert(context.Context, *Cat) (*Empty, error)
-	Get(context.Context, *CatIdRequest) (*Cat, error)
-	Delete(context.Context, *CatIdRequest) (*Empty, error)
+	Insert(context.Context, *CatInput) (*Cat, error)
+	Get(context.Context, *CatById) (*Cat, error)
+	Delete(context.Context, *CatById) (*Empty, error)
 	Watch(*Empty, CatService_WatchServer) error
 }
 
@@ -328,13 +377,13 @@ type UnimplementedCatServiceServer struct {
 func (*UnimplementedCatServiceServer) List(ctx context.Context, req *Empty) (*CatList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (*UnimplementedCatServiceServer) Insert(ctx context.Context, req *Cat) (*Empty, error) {
+func (*UnimplementedCatServiceServer) Insert(ctx context.Context, req *CatInput) (*Cat, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Insert not implemented")
 }
-func (*UnimplementedCatServiceServer) Get(ctx context.Context, req *CatIdRequest) (*Cat, error) {
+func (*UnimplementedCatServiceServer) Get(ctx context.Context, req *CatById) (*Cat, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedCatServiceServer) Delete(ctx context.Context, req *CatIdRequest) (*Empty, error) {
+func (*UnimplementedCatServiceServer) Delete(ctx context.Context, req *CatById) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (*UnimplementedCatServiceServer) Watch(req *Empty, srv CatService_WatchServer) error {
@@ -364,7 +413,7 @@ func _CatService_List_Handler(srv interface{}, ctx context.Context, dec func(int
 }
 
 func _CatService_Insert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Cat)
+	in := new(CatInput)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -376,13 +425,13 @@ func _CatService_Insert_Handler(srv interface{}, ctx context.Context, dec func(i
 		FullMethod: "/cats.CatService/Insert",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatServiceServer).Insert(ctx, req.(*Cat))
+		return srv.(CatServiceServer).Insert(ctx, req.(*CatInput))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _CatService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CatIdRequest)
+	in := new(CatById)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -394,13 +443,13 @@ func _CatService_Get_Handler(srv interface{}, ctx context.Context, dec func(inte
 		FullMethod: "/cats.CatService/Get",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatServiceServer).Get(ctx, req.(*CatIdRequest))
+		return srv.(CatServiceServer).Get(ctx, req.(*CatById))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _CatService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CatIdRequest)
+	in := new(CatById)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -412,7 +461,7 @@ func _CatService_Delete_Handler(srv interface{}, ctx context.Context, dec func(i
 		FullMethod: "/cats.CatService/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatServiceServer).Delete(ctx, req.(*CatIdRequest))
+		return srv.(CatServiceServer).Delete(ctx, req.(*CatById))
 	}
 	return interceptor(ctx, in, info, handler)
 }

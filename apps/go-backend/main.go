@@ -7,6 +7,8 @@ import (
 
 	"google.golang.org/grpc"
 	pb "./cats"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 const (
@@ -25,23 +27,23 @@ type server struct{
 // }
 
 func (s *server) List(ctx context.Context, req *pb.Empty) (*pb.CatList, error) {
-	return &s.catsList, nil
+	return &s.catsList, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 
-func (s *server) Delete(ctx context.Context, req *pb.CatIdRequest) (*pb.Empty, error) {
-	return nil, nil
+func (s *server) Delete(ctx context.Context, req *pb.CatById) (*pb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 
-func (s *server) Insert(ctx context.Context, req *pb.Cat) (*pb.Empty, error) {
-	return nil, nil
+func (s *server) Insert(ctx context.Context, req *pb.CatInput) (*pb.Cat, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 
-func (s *server) Get(ctx context.Context, req *pb.CatIdRequest) (*pb.Cat, error) {
-	return nil, nil
+func (s *server) Get(ctx context.Context, req *pb.CatById) (*pb.Cat, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 
 func (s *server) Watch(req *pb.Empty, srv pb.CatService_WatchServer) error {
-	return nil
+	return status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 
 func main() {

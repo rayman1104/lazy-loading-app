@@ -1,46 +1,63 @@
-import { Logger, ParseIntPipe, UseGuards } from '@nestjs/common';
-import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
-import { PubSub } from 'graphql-subscriptions';
+import { Logger, OnModuleInit, ParseIntPipe, UseGuards } from '@nestjs/common';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Client, ClientGrpc } from '@nestjs/microservices';
+// import { PubSub } from 'graphql-subscriptions';
+import { Observable } from 'rxjs';
 import { GqlAuthGuard } from '../auth/graphql-auth.guard';
-import { CatEntity } from './cat.entity';
-import { CatsService } from './cats.service';
+import { grpcClientOptions } from '../grpc-client.options';
 import { CreateCatDto } from './dto/create-cat.dto';
+import { CatEntity } from './entities/cat.entity';
 
-const pubSub = new PubSub();
+// const pubSub = new PubSub();
+
+interface CatService {
+  list(data: {}): Observable<any>;
+  insert(data: CreateCatDto): Observable<any>;
+  get(data: { id: number }): Observable<any>;
+  delete(data: { id: number }): Observable<any>;
+}
 
 @Resolver('Cat')
-export class CatsResolvers {
+export class CatsResolvers implements OnModuleInit {
+  @Client(grpcClientOptions)
+  private readonly client: ClientGrpc;
+
+  private catService: CatService;
+
   private logger = new Logger(CatsResolvers.name);
-  constructor(private readonly catsService: CatsService) {}
+
+  onModuleInit() {
+    this.catService = this.client.getService<CatService>('CatService');
+  }
 
   @Query()
   @UseGuards(GqlAuthGuard)
-  async getCats() {
+  getCats(): Observable<any> {
     this.logger.log('getCats called');
-    return await this.catsService.findAll();
+    return  this.catService.list({});
   }
 
   @Query('cat')
   @UseGuards(GqlAuthGuard)
-  async findOneById(
+  findOneById(
     @Args('id', ParseIntPipe)
     id: number,
-  ): Promise<CatEntity> {
+  ): Observable<CatEntity> {
     this.logger.log('getCat called');
-    return await this.catsService.findOneById(id);
+    return this.catService.get({ id });
   }
 
   @Mutation('createCat')
   @UseGuards(GqlAuthGuard)
-  async create(@Args('createCatInput') args: CreateCatDto): Promise<CatEntity> {
+  create(@Args('createCatInput') args: CreateCatDto): Observable<CatEntity> {
     this.logger.log('createCat called');
-    const createdCat = await this.catsService.create(args);
-    pubSub.publish('catCreated', { catCreated: createdCat });
-    return createdCat;
+    return this.catService.insert(args);
   }
 
+  /*
   @Subscription('catCreated')
   catCreated() {
     return pubSub.asyncIterator('catCreated');
   }
+  */
 }

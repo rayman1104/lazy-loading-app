@@ -4,8 +4,8 @@ import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthModule } from '../auth/auth.module';
-import { CatEntity } from '../cats/cat.entity';
 import { CatsModule } from '../cats/cats.module';
+import { CatEntity } from '../cats/entities/cat.entity';
 import { UserModule } from '../user/user.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
