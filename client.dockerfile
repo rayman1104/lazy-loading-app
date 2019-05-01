@@ -1,12 +1,10 @@
-FROM node:8
+FROM node:10
 
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 
 COPY . .
-RUN npx ng build --prod
 
 EXPOSE 4200
-# CMD [ "npm", "run", "start:prod" ]
-CMD npx ng serve --prod --host 0.0.0.0
+CMD npx ng build --prod && npx ng serve --prod --host 0.0.0.0

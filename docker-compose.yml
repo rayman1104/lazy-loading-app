@@ -12,7 +12,9 @@ services:
       context: .
       dockerfile: server.dockerfile
     ports:
-      - "3333:3333"
+      - 3333:3333
+    volumes:
+      - ".:/usr/src/app"
   app:
     networks:
       - corp
@@ -20,7 +22,10 @@ services:
       context: .
       dockerfile: client.dockerfile
     ports:
-      - "4200:4200"
+      - 4200:4200
+    command: npx ng serve --host 0.0.0.0
+    volumes:
+      - ".:/usr/src/app"
   db:
     image: postgres
     restart: always
@@ -34,4 +39,4 @@ services:
     build:
       context: ./apps/go-backend
     ports:
-      - "50051:50051"
+      - 50051:50051
