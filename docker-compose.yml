@@ -14,7 +14,8 @@ services:
     ports:
       - 3333:3333
     volumes:
-      - ".:/usr/src/app"
+      - "./apps:/usr/src/app/apps:ro"
+      - "./libs:/usr/src/app/libs:ro"
   app:
     networks:
       - corp
@@ -25,7 +26,8 @@ services:
       - 4200:4200
     command: npx ng serve --host 0.0.0.0
     volumes:
-      - ".:/usr/src/app"
+      - "./apps:/usr/src/app/apps:ro"
+      - "./libs:/usr/src/app/libs:ro"
   db:
     image: postgres
     restart: always
