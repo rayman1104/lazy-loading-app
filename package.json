@@ -50,7 +50,7 @@
     "@nrwl/workspace": "^8.2.0",
     "argon2": "^0.24.0",
     "class-transformer": "^0.3.1",
-    "class-validator": "^0.9.1",
+    "class-validator": "^0.14.0",
     "core-js": "^3.1.4",
     "helmet": "^3.19.0",
     "passport": "^0.4.0",
